@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.city_displayer_matthieu"
+    },
+    "jhipsterVersion": "6.4.1",
+    "applicationType": "monolith",
+    "baseName": "city_displayer",
+    "packageName": "com.city_displayer_matthieu",
+    "packageFolder": "com/city_displayer_matthieu",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "Mjg3MjIwODY0YzJlYzgzNzY5YjlmN2EyYzIyZjYwYzAxNjkxZGU5NzBhNDFkODMxN2NhOWM4MzEzMjA4NmNjOWVjOGM2NjgyMjY0YmUwNDZiMTI0MmU4OWJiZTViN2Y1ZGNlYjg3M2NlMDlhNmQxMWU1ZjE1YmQ1ZjkyMzZmMzg=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
