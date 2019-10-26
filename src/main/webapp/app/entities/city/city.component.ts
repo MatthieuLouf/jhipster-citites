@@ -11,6 +11,7 @@ import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CityService } from './city.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'jhi-city',
@@ -31,13 +32,19 @@ export class CityComponent implements OnInit, OnDestroy {
   previousPage: any;
   reverse: any;
 
+  filterForm = this.fb.group({
+    date: [],
+    inhabitants_number: []
+  });
+
   constructor(
     protected cityService: CityService,
     protected parseLinks: JhiParseLinks,
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private fb: FormBuilder
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -120,5 +127,27 @@ export class CityComponent implements OnInit, OnDestroy {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.cities = data;
+  }
+
+  filterDate() {
+    this.cityService
+      .query({
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+        'created_date.greaterThan': this.filterForm.get(['date']).value
+      })
+      .subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
+  }
+
+  filterNumber() {
+    this.cityService
+      .query({
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+        'inhabitants.greaterThan': this.filterForm.get(['inhabitants_number']).value
+      })
+      .subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
   }
 }

@@ -14,6 +14,23 @@
     <div class="alert alert-warning" *ngIf="cities?.length === 0">
         <span>No cities found</span>
     </div>
+
+    <form name="editForm" role="form" [formGroup]="filterForm">
+        <div class="row">
+            <br/>
+            <div class="col-md-2">
+                <label class="form-control-label" for="field_inhabitants_number">More inhabitants than</label>
+                <input type="number" class="form-control" name="inhabitants_number" id="field_inhabitants_number"
+                       formControlName="inhabitants_number" (ngModelChange)="filterNumber()"/>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="form-control-label" for="field_date">Dates after</label>
+                <input type="date" class="form-control" name="date" id="field_date"
+                       formControlName="date" (ngModelChange)="filterDate()"/>
+            </div>
+        </div>
+    </form>
+
     <div class="table-responsive" *ngIf="cities?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>

@@ -86,7 +86,7 @@ export class CityUpdateComponent implements OnInit {
       name: this.editForm.get(['name']).value,
       inhabitants: this.editForm.get(['inhabitants']).value,
       postal_code: this.editForm.get(['postal_code']).value,
-      created_date: this.editForm.get(['created_date']).value,
+      created_date: moment(),
       user: this.editForm.get(['user']).value
     };
   }
