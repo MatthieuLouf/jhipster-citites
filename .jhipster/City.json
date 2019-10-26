@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "city"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inhabitants",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "postal_code",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "created_date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20191023132831",
+    "dto": "no",
+    "searchEngine": true,
+    "service": "serviceClass",
+    "entityTableName": "city",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}
