@@ -129,25 +129,19 @@ export class CityComponent implements OnInit, OnDestroy {
     this.cities = data;
   }
 
-  filterDate() {
-    this.cityService
-      .query({
-        page: this.page - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-        'created_date.greaterThan': this.filterForm.get(['date']).value
-      })
-      .subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
-  }
+  filter() {
+    var params = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort()
+    };
+    if (this.filterForm.get(['date']).value != null) {
+      Object.assign(params, { 'created_date.greaterThan': this.filterForm.get(['date']).value });
+    }
+    if (this.filterForm.get(['inhabitants_number']).value != null) {
+      Object.assign(params, { 'inhabitants.greaterThan': this.filterForm.get(['inhabitants_number']).value });
+    }
 
-  filterNumber() {
-    this.cityService
-      .query({
-        page: this.page - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-        'inhabitants.greaterThan': this.filterForm.get(['inhabitants_number']).value
-      })
-      .subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
+    this.cityService.query(params).subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
   }
 }

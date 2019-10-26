@@ -21,12 +21,12 @@
             <div class="col-md-2">
                 <label class="form-control-label" for="field_inhabitants_number">More inhabitants than</label>
                 <input type="number" class="form-control" name="inhabitants_number" id="field_inhabitants_number"
-                       formControlName="inhabitants_number" (ngModelChange)="filterNumber()"/>
+                       formControlName="inhabitants_number" (ngModelChange)="filter()"/>
             </div>
             <div class="col-md-2 form-group">
                 <label class="form-control-label" for="field_date">Dates after</label>
                 <input type="date" class="form-control" name="date" id="field_date"
-                       formControlName="date" (ngModelChange)="filterDate()"/>
+                       formControlName="date" (ngModelChange)="filter()"/>
             </div>
         </div>
     </form>
