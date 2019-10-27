@@ -34,7 +34,8 @@ export class CityComponent implements OnInit, OnDestroy {
 
   filterForm = this.fb.group({
     date: [],
-    inhabitants_number: []
+    inhabitants_number_max: [],
+    inhabitants_number_min: []
   });
 
   constructor(
@@ -130,17 +131,18 @@ export class CityComponent implements OnInit, OnDestroy {
   }
 
   filter() {
-    var params = {
+    let date = this.filterForm.get(['date']).value;
+    let inhabitants_number_min = this.filterForm.get(['inhabitants_number_min']).value;
+    let inhabitants_number_max = this.filterForm.get(['inhabitants_number_max']).value;
+
+    let params = {
       page: this.page - 1,
       size: this.itemsPerPage,
-      sort: this.sort()
+      sort: this.sort(),
+      'created_date.greaterThanOrEqual': date !== null ? date : '',
+      'inhabitants.greaterThanOrEqual': inhabitants_number_min !== null ? inhabitants_number_min : '',
+      'inhabitants.lessThanOrEqual': inhabitants_number_max !== null ? inhabitants_number_max : ''
     };
-    if (this.filterForm.get(['date']).value != null) {
-      Object.assign(params, { 'created_date.greaterThan': this.filterForm.get(['date']).value });
-    }
-    if (this.filterForm.get(['inhabitants_number']).value != null) {
-      Object.assign(params, { 'inhabitants.greaterThan': this.filterForm.get(['inhabitants_number']).value });
-    }
 
     this.cityService.query(params).subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
   }

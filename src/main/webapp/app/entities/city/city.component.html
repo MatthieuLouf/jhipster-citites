@@ -18,10 +18,15 @@
     <form name="editForm" role="form" [formGroup]="filterForm">
         <div class="row">
             <br/>
-            <div class="col-md-2">
-                <label class="form-control-label" for="field_inhabitants_number">More inhabitants than</label>
-                <input type="number" class="form-control" name="inhabitants_number" id="field_inhabitants_number"
-                       formControlName="inhabitants_number" (ngModelChange)="filter()"/>
+            <div class="col-md-2 form-group">
+                <label class="form-control-label" for="field_inhabitants_number_min">More inhabitants than</label>
+                <input type="number" class="form-control" name="inhabitants_number_min" id="field_inhabitants_number_min"
+                       formControlName="inhabitants_number_min" (ngModelChange)="filter()"/>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="form-control-label" for="field_inhabitants_number_max">Less inhabitants than</label>
+                <input type="number" class="form-control" name="inhabitants_number_max" id="field_inhabitants_number_max"
+                       formControlName="inhabitants_number_max" (ngModelChange)="filter()"/>
             </div>
             <div class="col-md-2 form-group">
                 <label class="form-control-label" for="field_date">Dates after</label>
