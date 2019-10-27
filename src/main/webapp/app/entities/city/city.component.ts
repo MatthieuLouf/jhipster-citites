@@ -81,7 +81,7 @@ export class CityComponent implements OnInit, OnDestroy {
         sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
       }
     });
-    this.loadAll();
+    this.filter();
   }
 
   clear() {
